@@ -1,16 +1,21 @@
 package dam.m06.uf2;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity(name ="sports")
 @Table(name ="sports")
-public class Sport
+public class Sport implements Serializable
 {
 	@Id
-	@Column(name = "code", unique = true, nullable = false, length = 5)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "code", unique = true, nullable = false)
 	private long code;
 
 	@Column(name = "name", length = 60)
@@ -26,11 +31,16 @@ public class Sport
 	{
 		this.code = code;
 	}
-	
+
 	// DB SELECT
 	public Sport(long code, String name)
 	{
 		this.code = code;
+		this.name = name;
+	}
+
+	public Sport(String name)
+	{
 		this.name = name;
 	}
 
@@ -53,5 +63,4 @@ public class Sport
 	{
 		this.name = name;
 	}
-
 }
