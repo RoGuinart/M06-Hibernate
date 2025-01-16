@@ -43,14 +43,14 @@ public class DAO
 	{
 		// TODO: use createMutationQuery instead
 		Transaction t = session.beginTransaction();
-		session.save(spt);
+		session.persist(spt);
 		t.commit();
 	}
 
 	public static void addAthlete(Athlete ath)
 	{
 		Transaction t = session.beginTransaction();
-		session.save(ath);
+		session.persist(ath);
 		t.commit();
 	}
 
